@@ -4,19 +4,21 @@ export const api = {
     getAll: async (url) => {
 
         let response = [];
-
         await axiosInstance.get(url)
             .then(res => {
                 response = res.data;
             })
        return response;
     },
-    add: async (url) => {
+    add: async (url, data) => {
         let response = {};
-        await axiosInstance.post(url)
+        await axiosInstance.post(url, data)
             .then(res => {
                 response = res.data;
-            });
+            })
+            .catch(err => {
+               throw err;
+            })
 
         return response;
     }

@@ -22,19 +22,17 @@ function Create() {
 
         api.getAll('/webusers')
             .then(res => {
-                let data = []
+
+                let data = [];
                 res.forEach(element => {
                     data.push({
-                        label:element.email,
-                        value:element._id
+                        label: element.email,
+                        value: element._id
                     })
                 });
-
                 setselectSource(data);
 
-
             })
-
     }, [])
 
 
@@ -47,9 +45,32 @@ function Create() {
         }
     });
 
-    const add = (data) => {
-        console.log('Data ', data);
+    const add = (formData) => {
+
+        let requestData = {
+            name: formData.name,
+            users: []
+        };
+
+        formData.members.forEach(item => {
+            requestData.users.push(item.value)
+        });
+
+        api.add('/groups', requestData)
+            .then(res => {
+                console.log('Response ', res);
+            })
+            .catch(err => {
+                if(err.response.status == 422){
+                    alert('Böyle bir grup adı kayıtlarda mevcuttur! Lütfen yeni bir ad bulunuz')
+                }
+                else{
+                    alert('Sistemde bir hata meydana geldi!')
+                }
+            })
+
     }
+
 
     return (<>
         <div>
