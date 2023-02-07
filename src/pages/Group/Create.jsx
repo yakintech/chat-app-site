@@ -1,9 +1,10 @@
 import { Button, Input, TextField } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form';
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
 import Select from 'react-select';
+import { api } from '../../network/api';
 
 
 
@@ -14,6 +15,30 @@ const userFormSchema = yup.object({
 
 
 function Create() {
+
+    const [selectSource, setselectSource] = useState([])
+
+    useEffect(() => {
+
+        api.getAll('/webusers')
+            .then(res => {
+                let data = []
+                res.forEach(element => {
+                    data.push({
+                        label:element.email,
+                        value:element._id
+                    })
+                });
+
+                setselectSource(data);
+
+
+            })
+
+    }, [])
+
+
+
 
     const { handleSubmit, control, formState: { errors } } = useForm({
         resolver: yupResolver(userFormSchema),
@@ -48,16 +73,7 @@ function Create() {
                             name='members'
                             className="basic-multi-select"
                             classNamePrefix="select"
-                            options={[
-                                {
-                                    value: 1,
-                                    label: 'Group-1'
-                                },
-                                {
-                                    value: 2,
-                                    label: 'Group-2'
-                                }
-                            ]}
+                            options={selectSource}
                         ></Select>}
                     />
 

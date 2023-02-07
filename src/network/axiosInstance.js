@@ -1,7 +1,7 @@
-const { default: axios } = require("axios");
+import axios from 'axios'
 
 export const axiosInstance = axios.create({
-    baseURL: 'https://some-domain.com/api/',
+    baseURL: 'http://localhost:8088/api',
     timeout: 1000
   });
 

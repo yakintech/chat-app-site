@@ -1,6 +1,6 @@
 import { axiosInstance } from "./axiosInstance";
 
-const api = {
+export const api = {
     getAll: async (url) => {
 
         let response = [];
@@ -9,7 +9,7 @@ const api = {
             .then(res => {
                 response = res.data;
             })
-
+       return response;
     },
     add: async (url) => {
         let response = {};
