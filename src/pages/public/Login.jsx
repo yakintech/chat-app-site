@@ -15,8 +15,7 @@ function Login() {
 
         api.add('/webusers/login', user)
             .then(res => {
-                console.log(res);
-                navigate('confirmCode')
+                navigate('confirmCode', { state: { webUserId: res._id } })
             })
             .catch(err => {
                 console.log('Err', err);

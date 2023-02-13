@@ -17,6 +17,7 @@ export const api = {
                 response = res.data;
             })
             .catch(err => {
+                console.log('Err', err);
                throw err;
             })
 

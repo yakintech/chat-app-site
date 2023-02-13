@@ -6,6 +6,7 @@ import Index from './pages/Group/Index'
 import Login from './pages/public/Login'
 import { authContext } from './store/AuthContext'
 import ConfirmCode from './pages/public/ConfirmCode'
+import Home from './pages/dashboard/Home'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
       <h1>Admin Header</h1>
       <button onClick={logout}>Logout</button>
       <Routes>
+        <Route path='/' element={<Home/>}></Route>
         <Route path='/group/create' element={<Create />} />
         <Route path='/group' element={<Index />} />
         <Route path='/login' element={<Login />} />

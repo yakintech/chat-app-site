@@ -1,9 +1,11 @@
 import React, { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { api } from '../../network/api'
 import { authContext } from '../../store/AuthContext';
 
 function ConfirmCode() {
+
+    let location = useLocation()
 
     const navigate = useNavigate();
     const { loginStatus, setloginStatus } = useContext(authContext);
@@ -11,11 +13,13 @@ function ConfirmCode() {
 
     const confirm = () => {
 
-        api.add('/webusers/confirmCode', {})
+        api.add('/webusers/confirmCode', {confirmCode:confirmCode, webUserId: location.state.webUserId})
             .then(res => {
                 localStorage.setItem('token', res.token);
                 setloginStatus(true);
-                navigate('group')
+            })
+            .catch(err => {
+                alert('Confirm Code Error!!');
             })
 
     }
