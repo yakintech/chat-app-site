@@ -14,20 +14,33 @@ function Index() {
             })
     }, [])
 
+    const handleDelete = (id) => {
+        console.log(id);
+    };
+
     const columns = [
         { field: 'id', headerName: 'Group ID', width: 150 },
         { field: 'name', headerName: 'Name', width: 150 },
         { field: 'createDate', headerName: 'Create Date', width: 150 },
-      ];
+        { field: 'members', headerName: 'Members', width: 500 },
+        {
+            field: "actions",
+            headerName: "Actions",
+            width: 150,
+            renderCell: (params) => {
+                return <button onClick={() => handleDelete(params.id)}>Delete</button>
+            }
+        }
+    ];
 
     return (<>
-    <div style={{ height: 300, width: '100%' }}>
-         <DataGrid
-        rows={groups}
-        columns={columns}
-    /> 
-    </div>
-  
+        <div style={{ height: 300, width: '100%' }}>
+            <DataGrid
+                rows={groups}
+                columns={columns}
+            />
+        </div>
+
     </>)
 }
 
