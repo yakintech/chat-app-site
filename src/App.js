@@ -8,7 +8,7 @@ import { authContext } from './store/AuthContext'
 import ConfirmCode from './pages/public/ConfirmCode'
 import Home from './pages/dashboard/Home'
 import PublicLayout from './pages/layout/PublicLayout'
-import ProtecrtedLayout from './pages/layout/ProtectedLayout'
+// import ProtecrtedLayout from './pages/layout/ProtectedLayout'
 import ProtectedLayout from './pages/layout/ProtectedLayout'
 
 function App() {
