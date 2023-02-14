@@ -15,6 +15,7 @@ function ConfirmCode() {
 
         api.add('/webusers/confirmCode', {confirmCode:confirmCode, webUserId: location.state.webUserId})
             .then(res => {
+        
                 localStorage.setItem('token', res.token);
                 setloginStatus(true);
             })

@@ -12,6 +12,7 @@ function Index() {
                 setgroups(res)
                 console.log('Res', res);
             })
+          
     }, [])
 
     const handleDelete = (id) => {
