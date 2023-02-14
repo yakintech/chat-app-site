@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, Outlet } from 'react-router-dom';
 import { authContext } from '../../store/AuthContext';
 import styles from './index.module.css';
 
@@ -13,10 +13,9 @@ const Sidebar = () => {
 	if (!loginStatus) return <Navigate to="/" />;
 	return (
 		<div className={styles.wrapper}>
-			{' '}
 			<ul>
 				<li>
-					<Link to="/admin/">Home</Link>
+					<Link to="/admin/dashboard">Dashboard</Link>
 				</li>
 				<li>
 					<Link to="/admin/group">Group</Link>

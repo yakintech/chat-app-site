@@ -1,13 +1,14 @@
-import React, { useContext } from 'react';
-import { Link, Navigate, Outlet } from 'react-router-dom';
+import React from 'react';
+import { Outlet } from 'react-router-dom';
 import Sidebar from '../../components/Sidebar';
+import styles from './index.module.css';
 
 function ProtectedLayout() {
 	return (
-		<>
+		<div className={styles.wrapper}>
 			<Sidebar />
 			<Outlet />
-		</>
+		</div>
 	);
 }
 
