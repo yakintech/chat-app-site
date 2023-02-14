@@ -10,7 +10,7 @@ import { api } from '../../network/api';
 
 const userFormSchema = yup.object({
     name: yup.string().required('Group Name is requried'),
-    // lastname: yup.string().required('Last name is required')
+    members: yup.array().min(1,'You must add at least 1 user')
 })
 
 
@@ -42,7 +42,7 @@ function Create() {
         resolver: yupResolver(userFormSchema),
         defaultValues: {
             name: '',
-            users: []
+            members: []
         }
     });
 
@@ -50,11 +50,11 @@ function Create() {
 
         let requestData = {
             name: formData.name,
-            users: []
+            members: []
         };
 
-        formData.users.forEach(item => {
-            requestData.users.push(item.value)
+        formData.members.forEach(item => {
+            requestData.members.push(item.value)
         });
 
         api.add('/groups', requestData)
@@ -92,14 +92,14 @@ function Create() {
                     <Box display="flex" alignItems="center" flexDirection="column">
                         <Box position="relative" width="100%" >
                             <Box marginBottom="40px" display="flex" alignItems="center" flexDirection="row" justifyContent="space-between">
-                                <FormLabel>Select Users</FormLabel>
+                                <FormLabel>Select members</FormLabel>
                                 <Controller
-                                    name='users'
+                                    name='members'
                                     control={control}
                                     render={({ field }) => <Select
                                         {...field}
                                         isMulti
-                                        name='users'
+                                        name='members'
                                         className="basic-multi-select"
                                         classNamePrefix="select"
                                         options={selectSource}
