@@ -47,14 +47,13 @@ function Create() {
     });
 
     const add = (formData) => {
-
         let requestData = {
             name: formData.name,
-            members: []
+            users: []
         };
 
         formData.members.forEach(item => {
-            requestData.members.push(item.value)
+            requestData.users.push(item.value)
         });
 
         api.add('/groups', requestData)
