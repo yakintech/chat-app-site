@@ -1,0 +1,13 @@
+
+.wrapper{
+    width: 20%;
+    height: 100vh;
+    background-color: #1F1E1E;
+    padding: 15px 10px;
+}
+.wrapper img{
+    width: 100px;
+    height: 40px;
+    object-fit: contain;
+    margin: 0 auto;
+}
