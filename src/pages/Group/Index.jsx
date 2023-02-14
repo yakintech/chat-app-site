@@ -7,25 +7,27 @@ function Index() {
 
   useEffect(() => {
     api.getAll("/groups").then((res) => {
-      setgroups(
-        res.map((group) => {
-          return {
-            ...group,
-            createDate: group.createDate.substring(0, 10),
-          };
-        })
-      );
+      setgroups(res);
+      console.log("Res", res);
     });
   }, []);
 
-  console.log(groups);
+  const handleDelete = (id) => {
+    console.log(id);
+  };
+
   const columns = [
     { field: "id", headerName: "Group ID", width: 150 },
     { field: "name", headerName: "Name", width: 150 },
+    { field: "createDate", headerName: "Create Date", width: 150 },
+    { field: "members", headerName: "Members", width: 500 },
     {
-      field: "createDate",
-      headerName: "Create Date",
+      field: "actions",
+      headerName: "Actions",
       width: 150,
+      renderCell: (params) => {
+        return <button onClick={() => handleDelete(params.id)}>Delete</button>;
+      },
     },
   ];
 
