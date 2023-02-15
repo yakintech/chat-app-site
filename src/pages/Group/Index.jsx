@@ -28,9 +28,12 @@ function Index() {
   const handleDelete = () => {
     api.remove("/groups", id).then((res) => {
       setOpen(false);
+
+      api.getAll("/groups").then((res) => {
+        setgroups(res);
+      });
     });
   };
-
   const columns = [
     { field: "id", headerName: "Group ID", width: 250 },
     { field: "name", headerName: "Name", width: 150 },
@@ -75,7 +78,7 @@ function Index() {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"ARE YOU SURE YOU WANT TO DELETE THIS GROUP?"}
+          {"Are you sure to delete this group?"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
