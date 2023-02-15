@@ -88,3 +88,7 @@
 	height: 30px;
 	width: 30px;
 }
+
+.chat {
+	display: flex;
+}

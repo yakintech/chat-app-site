@@ -6,6 +6,7 @@ import online from '../../images/icons/online.png';
 import offline from '../../images/icons/offline.png';
 import profile from '../../images/icons/profile.png';
 import groupuser from '../../images/icons/groupuser.png';
+import ApexChatr from '../../components/react-apexCharts/ApexChatr';
 
 function Dashboard() {
 	return (
@@ -49,37 +50,41 @@ function Dashboard() {
 				</div>
 			</div>
 
-			<div className={styles.new_user}>
-				<div className={styles.user_title_wrapper}>
-					<h2 className={styles.user_title}>New Users</h2>
-					<img className={styles.user_img} src={groupuser} alt="#" />
+			<div className={styles.chat}>
+				<div className={styles.new_user}>
+					<div className={styles.user_title_wrapper}>
+						<h2 className={styles.user_title}>New Users</h2>
+						<img className={styles.user_img} src={groupuser} alt="#" />
+					</div>
+
+					<div className={styles.user_info}>
+						<h3 className={styles.user_subtitle}>Profile</h3>
+						<h3 className={styles.user_subtitle}>Name</h3>
+						<h3 className={styles.user_subtitle}>Date</h3>
+					</div>
+					<div className={styles.user_info}>
+						<img src={profile} alt="#" />
+						<p className={styles.user_name}>Eminem</p>
+						<p className={styles.user_date}>01.02.2023</p>
+					</div>
+					<div className={styles.user_info}>
+						<img src={profile} alt="#" />
+						<p className={styles.user_name}>Eminem</p>
+						<p className={styles.user_date}>01.02.2023</p>
+					</div>
+					<div className={styles.user_info}>
+						<img src={profile} alt="#" />
+						<p className={styles.user_name}>Eminem</p>
+						<p className={styles.user_date}>01.02.2023</p>
+					</div>
+					<div className={styles.user_info}>
+						<img src={profile} alt="#" />
+						<p className={styles.user_name}>Eminem</p>
+						<p className={styles.user_date}>01.02.2023</p>
+					</div>
 				</div>
 
-				<div className={styles.user_info}>
-					<h3 className={styles.user_subtitle}>Profile</h3>
-					<h3 className={styles.user_subtitle}>Name</h3>
-					<h3 className={styles.user_subtitle}>Date</h3>
-				</div>
-				<div className={styles.user_info}>
-					<img src={profile} alt="#" />
-					<p className={styles.user_name}>Eminem</p>
-					<p className={styles.user_date}>01.02.2023</p>
-				</div>
-				<div className={styles.user_info}>
-					<img src={profile} alt="#" />
-					<p className={styles.user_name}>Eminem</p>
-					<p className={styles.user_date}>01.02.2023</p>
-				</div>
-				<div className={styles.user_info}>
-					<img src={profile} alt="#" />
-					<p className={styles.user_name}>Eminem</p>
-					<p className={styles.user_date}>01.02.2023</p>
-				</div>
-				<div className={styles.user_info}>
-					<img src={profile} alt="#" />
-					<p className={styles.user_name}>Eminem</p>
-					<p className={styles.user_date}>01.02.2023</p>
-				</div>
+				<ApexChatr />
 			</div>
 		</div>
 	);
