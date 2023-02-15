@@ -15,6 +15,7 @@ const Sidebar = () => {
 
 	if (!loginStatus) return <Navigate to="/" />;
 
+	
 	return (
 		<>
 		  <div className={styles.sidebar_bigdiv}>
@@ -29,7 +30,7 @@ const Sidebar = () => {
               <i className="fa-solid fa-house-chimney"></i>&nbsp;Dashboards
               <ul className={styles.sidebar_allminidiv}>
                 <li>
-                  <a href="#">Default</a>
+				<Link to="/admin/dashboard">Dashboard</Link>
                 </li>
                 <li>
                   <a href="#">Sass</a>
@@ -47,17 +48,12 @@ const Sidebar = () => {
               <i className="fa-solid fa-layer-group"></i>&nbsp;Layout
               <ul className={styles.sidebar_allminidiv}>
                 <li>
-                  <a href="#">Default</a>
+				<Link to="/admin/group">Group</Link>
                 </li>
                 <li>
-                  <a href="#">Sass</a>
+                <Link to="/admin/group/create">Group Create</Link>
                 </li>
-                <li>
-                  <a href="#">Crypbt</a>
-                </li>
-                <li>
-                  <a href="#">Blog</a>
-                </li>
+              
               </ul>
             </li>
           </ul>
@@ -170,24 +166,14 @@ const Sidebar = () => {
                 </li>
               </ul>
             </li>
+
+		<button onClick={logout}>Logout</button> 
           </ul>
         </ul>
       </div>
 	
 			
-			{/* {' '}
-			<ul>
-				<li>
-					<Link to="/admin/dashboard">Dashboard</Link>
-				</li>
-				<li>
-					<Link to="/admin/group">Group</Link>
-				</li>
-				<li>
-					<Link to="/admin/group/create">Group Create</Link>
-				</li>
-			</ul>
-			<button onClick={logout}>Logout</button> */}
+		
 		
 		</>
 	);
