@@ -1,14 +1,18 @@
-import { Button, Input, TextField, FormControlLabel, FormGroup, FormLabel, Box, Typography, } from '@mui/material'
+import { Button,TextField,FormGroup, FormLabel, Box, Typography, } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Select from 'react-select';
 import { api } from '../../network/api';
-import {userFormValidationSchema} from './userFormValidationSchema'
+import { userFormValidationSchema } from './userFormValidationSchema'
+import { useNavigate } from 'react-router-dom';
+import { toast} from 'react-toastify';
 
 
 
 function Create() {
+
+    let navigate = useNavigate()
 
     const [selectSource, setselectSource] = useState([])
 
@@ -30,7 +34,7 @@ function Create() {
     }, [])
 
 
-    
+
 
     const { handleSubmit, control, formState: { errors } } = useForm({
         resolver: yupResolver(userFormValidationSchema),
@@ -53,13 +57,15 @@ function Create() {
         api.add('/groups', requestData)
             .then(res => {
                 console.log('Response ', res);
+                navigate("../group")
+                toast.success("Group is created")
             })
             .catch(err => {
-                if (err.response.status == 422) {
-                    alert('Böyle bir grup adı kayıtlarda mevcuttur! Lütfen yeni bir ad bulunuz')
+                if (err.response.status === 422) {
+                    alert('Such a group name is available in the records! Please find a new name')
                 }
                 else {
-                    alert('Sistemde bir hata meydana geldi!')
+                    alert('An error occurred in the system!')
                 }
             })
 
@@ -67,8 +73,9 @@ function Create() {
 
 
     return (<>
+
         <Box flexDirection="column" display="flex" alignItems="center">
-            <Typography  marginBottom="20px" color="primaery.main" align="center" variant="h5">Create Group</Typography>
+            <Typography marginBottom="20px" color="primaery.main" align="center" variant="h5">Create Group</Typography>
             <form onSubmit={handleSubmit(add)}>
                 <FormGroup sx={{ padding: 2, borderRadius: 2, border: '1px solid', width: "800px" }}>
                     <Box display="flex" alignItems="center" flexDirection="column">
@@ -105,7 +112,7 @@ function Create() {
                     </Box>
 
                     <Box display="flex" alignItems="center" justifyContent="center">
-                        <Button style={{ padding: '10px 30px',color:"#1F1F1F",borderColor:"#1F1F1F"}} type="submit" variant="outlined">Create</Button>
+                        <Button style={{ padding: '10px 30px', color: "#1F1F1F", borderColor: "#1F1F1F" }} type="submit" variant="outlined">Create</Button>
                     </Box>
                 </FormGroup>
             </form>
