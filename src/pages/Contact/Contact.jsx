@@ -1,14 +1,17 @@
 import React from 'react'
-
-
-
+import { useForm } from "react-hook-form";
 import { CardContent, FormControl, Button,TextField, Typography,Card,Grid } from '@mui/material';
+import ReCAPTCHA from "react-google-recaptcha";
 function Contact() {
+  const sitekey='6LdZhockAAAAAMlobuIsUjuDWwdRHM8fy4NUork4'
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const onSubmit = data => console.log(data);
   return (
     <div>
       <Typography gutterBottom variant='h3' align='center'>
-        React-App
+       Chat-App Contact Page
       </Typography>
+      <form onSubmit={handleSubmit(onSubmit)}>
       <Grid>
       <Card style={{ maxWidth: 450, padding: "20px 5px", margin: "0 auto" }}>
      
@@ -45,6 +48,18 @@ function Contact() {
             <Grid xs={12} item>
              <Button type="submit" variant="contained" color="primary" fullWidth>Submit</Button>
             </Grid>
+            <Grid xs={12} item>
+            <ReCAPTCHA sitekey={sitekey} size='normal' hl="tr" theme="dark" 
+      onErrored={(e)=>{
+        console.log("e",e)
+      }}
+      onExpired={(ex)=>{
+        console.log("ex",ex)
+      }}
+      onChange={(t)=>{
+        console.log("t",t)
+      }}/>
+            </Grid>
 
 
           </Grid>
@@ -52,7 +67,11 @@ function Contact() {
        
       
       </Card>
+     
       </Grid>
+
+      </form>
+     
     </div>
   )
 }
