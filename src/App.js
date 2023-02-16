@@ -8,6 +8,7 @@ import ConfirmCode from "./pages/public/ConfirmCode";
 import Dashboard from "./pages/dashboard/Dashboard";
 import PublicLayout from "./pages/layout/PublicLayout";
 import ProtectedLayout from "./pages/layout/ProtectedLayout";
+import Contact from "./pages/Contact/Contact";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Login />} />
           <Route path="confirmCode" element={<ConfirmCode />} />
+          <Route path="Contact" element={<Contact />} />
         </Route>
 
         <Route path="/admin" element={<ProtectedLayout />}>
