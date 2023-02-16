@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { CardContent, FormControl, Button,TextField, Typography,Card,Grid } from '@mui/material';
 import ReCAPTCHA from "react-google-recaptcha";
 function Contact() {
-  const sitekey='6LdZhockAAAAAMlobuIsUjuDWwdRHM8fy4NUork4'
+  const sitekey='6Lc7NIgkAAAAAAVNI4phmo_oY834XxPngT1cHZbN'
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = data => console.log(data);
   return (
