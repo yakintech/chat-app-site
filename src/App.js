@@ -1,14 +1,12 @@
 import React, { useContext } from "react";
-import ChatPage from "./pages/ChatPage";
 import Create from "./pages/group/Create";
-import { Routes, Route, Navigate, useNavigate, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Index from "./pages/group/Index";
 import Login from "./pages/public/Login";
 import { authContext } from "./store/AuthContext";
 import ConfirmCode from "./pages/public/ConfirmCode";
 import Home from "./pages/dashboard/Home";
 import PublicLayout from "./pages/layout/PublicLayout";
-import ProtecrtedLayout from "./pages/layout/ProtectedLayout";
 import ProtectedLayout from "./pages/layout/ProtectedLayout";
 
 function App() {
@@ -33,18 +31,18 @@ function App() {
   );
 }
 
-function Auth({ children }) {
-  const { loginStatus } = useContext(authContext);
+// function Auth({ children }) {
+//   const { loginStatus } = useContext(authContext);
 
-  if (loginStatus) {
-    return children;
-  } else {
-    return (
-      <Routes>
-        <Route path="/" element={<Login />} />
-      </Routes>
-    );
-  }
-}
+//   if (loginStatus) {
+//     return children;
+//   } else {
+//     return (
+//       <Routes>
+//         <Route path="/" element={<Login />} />
+//       </Routes>
+//     );
+//   }
+// }
 
 export default App;

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, Navigate, Outlet } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { authContext } from '../../store/AuthContext';
 import styles from './index.module.css';
 import logo from '../../images/logo-light.png'
