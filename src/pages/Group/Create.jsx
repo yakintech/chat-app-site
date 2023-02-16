@@ -1,12 +1,15 @@
+<<<<<<< HEAD
+import { Button, Input, TextField } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+=======
 import { Button, Input, TextField, FormControlLabel, FormGroup, FormLabel, Box, Typography, } from '@mui/material'
 import React, { useEffect, useState } from 'react'
+>>>>>>> main
 import { useForm, Controller } from 'react-hook-form';
-import * as yup from "yup";
+import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Select from 'react-select';
 import { api } from '../../network/api';
-
-
 
 const userFormSchema = yup.object({
     name: yup.string().required('Group Name is requried'),
@@ -15,27 +18,107 @@ const userFormSchema = yup.object({
 
 
 function Create() {
+	const [selectSource, setselectSource] = useState([]);
 
-    const [selectSource, setselectSource] = useState([])
+	useEffect(() => {
+		api.getAll('/webusers').then((res) => {
+			let data = [];
+			res.forEach((element) => {
+				data.push({
+					label: element.email,
+					value: element._id,
+				});
+			});
+			setselectSource(data);
+		});
+	}, []);
 
-    useEffect(() => {
+	const {
+		handleSubmit,
+		control,
+		formState: { errors },
+	} = useForm({
+		resolver: yupResolver(userFormSchema),
+		defaultValues: {
+			name: '',
+		},
+	});
 
-        api.getAll('/webusers')
-            .then(res => {
+	const add = (formData) => {
+		let requestData = {
+			name: formData.name,
+			users: [],
+		};
 
-                let data = [];
-                res.forEach(element => {
-                    data.push({
-                        label: element.email,
-                        value: element._id
-                    })
-                });
-                setselectSource(data);
+		formData.members.forEach((item) => {
+			requestData.users.push(item.value);
+		});
 
-            })
-    }, [])
+		api
+			.add('/groups', requestData)
+			.then((res) => {
+				console.log('Response ', res);
+			})
+			.catch((err) => {
+				if (err.response.status == 422) {
+					alert('Böyle bir grup adı kayıtlarda mevcuttur! Lütfen yeni bir ad bulunuz');
+				} else {
+					alert('Sistemde bir hata meydana geldi!');
+				}
+			});
+	};
 
+	return (
+		<>
+			<div>
+				<form onSubmit={handleSubmit(add)}>
+					<div>
+						<label>First Name</label>
+						<Controller name="name" control={control} render={({ field }) => <TextField {...field} />} />
+					</div>
+					<p style={{ color: 'red' }}>{errors.name?.message}</p>
+					<div>
+						<Controller
+							name="members"
+							control={control}
+							render={({ field }) => (
+								<Select
+									{...field}
+									isMulti
+									name="members"
+									className="basic-multi-select"
+									classNamePrefix="select"
+									options={selectSource}
+								></Select>
+							)}
+						/>
+					</div>
+					<div>
+						<button type="submit">Add</button>
+					</div>
+				</form>
 
+<<<<<<< HEAD
+				{/* <form onSubmit={handleSubmit(add)}>
+                <div>
+                    <label>First Name</label>
+                    <input type="text" {...register('firstname')} />
+                    <p style={{color:'red'}}>{errors.firstname?.message}</p>
+                </div>
+                <div>
+                    <label>Last Name</label>
+                    <input type="text" {...register('lastname')} />
+                    <p style={{color:'red'}}>{errors.lastname?.message}</p>
+
+                </div>
+                <button type='submit'>Submit</button>
+            </form> */}
+				{/* <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+            <Button onClick={add}>Add</Button> */}
+			</div>
+		</>
+	);
+=======
 
 
     const { handleSubmit, control, formState: { errors } } = useForm({
@@ -119,6 +202,7 @@ function Create() {
         </Box>
     </>
     )
+>>>>>>> main
 }
 
-export default Create
+export default Create;

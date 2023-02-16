@@ -1,0 +1,94 @@
+.info_boxs {
+	display: flex;
+	padding: 20px 15px;
+	align-items: center;
+}
+
+.info_box {
+	width: 250px;
+	height: 150px;
+	margin: 20px 10px;
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	background-color: #fff;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 8px;
+}
+
+.left {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.title {
+	color: grey;
+	font-size: 20px;
+	text-transform: uppercase;
+}
+
+.count {
+	font-weight: 700;
+	font-size: 24px;
+}
+
+.right img {
+	height: 60px;
+	width: 60px;
+}
+
+.new_user {
+	display: flex;
+	flex-direction: column;
+	margin: 20px;
+	background-color: #fff;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 8px;
+	width: 350px;
+}
+
+.user_title_wrapper {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid grey;
+	width: 100%;
+	margin: 20px auto;
+	padding: 10px 60px 10px 20px;
+}
+
+.user_info {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 20px;
+}
+
+.user_info img {
+	height: 40px;
+	width: 40px;
+}
+
+.user_subtitle {
+	padding-right: 45px;
+}
+
+.user_name,
+.user_date {
+	font-size: 16px;
+}
+
+.user_name {
+	padding-left: 10px;
+}
+
+.user_img {
+	height: 30px;
+	width: 30px;
+}
+
+.chat {
+	display: flex;
+}
