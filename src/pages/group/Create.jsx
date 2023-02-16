@@ -14,7 +14,7 @@ const userFormSchema = yup.object({
 })
 
 
-function create() {
+function Create() {
 
     const [selectSource, setselectSource] = useState([])
 
@@ -121,4 +121,4 @@ function create() {
     )
 }
 
-export default create
+export default Create
