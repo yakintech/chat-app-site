@@ -25,19 +25,23 @@ function Contact() {
         
           <Grid container spacing={1}>
             <Grid xs={12} sm={6} item>
-              <TextField label="First Name" placeholder='Enter first name' variant='outlined' fullWidth/>
+              <TextField label="First Name" placeholder='Enter first name' variant='outlined' fullWidth {...register("Name", { required:'*Zehmet olmasa xanani doldurun.' })}/>
+              <p className='reuiredfield'> {errors.Name && <span>{errors.Name.message}</span>}</p>
             </Grid>
 
             <Grid xs={12} sm={6} item>
-              <TextField label="Last Name" placeholder='Enter last name' variant='outlined' fullWidth/>
+              <TextField label="Last Name" placeholder='Enter last name' variant='outlined' fullWidth {...register("LastName", { required:'*Zehmet olmasa xanani doldurun.' })} />
+              <p className='reuiredfield'> {errors.LastName && <span>{errors.LastName.message}</span>}</p>
             </Grid>
 
             <Grid xs={12}  item>
-              <TextField type="email" label="Email" placeholder='Enter email' variant='outlined' fullWidth/>
+              <TextField type="email" label="Email" placeholder='Enter email' variant='outlined' fullWidth {...register("Email", { required:'*Zehmet olmasa xanani doldurun.' })}/>
+              <p className='reuiredfield'> {errors.Email && <span>{errors.Email.message}</span>}</p>
             </Grid>
 
             <Grid xs={12} item>
-              <TextField type="phone" label="Phone" placeholder='Enter your phone number' variant='outlined' fullWidth/>
+              <TextField type="phone" label="Phone" placeholder='Enter your phone number' variant='outlined' fullWidth {...register("pHONE", { required:'*Zehmet olmasa xanani doldurun.' })}/>
+              <p className='reuiredfield'> {errors.Phone && <span>{errors.Phone.message}</span>}</p>
             </Grid>
 
             
@@ -50,26 +54,21 @@ function Contact() {
             </Grid>
             <Grid xs={12} item>
             <ReCAPTCHA sitekey={sitekey} size='normal' hl="tr" theme="dark" 
-      onErrored={(e)=>{
-        console.log("e",e)
-      }}
-      onExpired={(ex)=>{
-        console.log("ex",ex)
-      }}
-      onChange={(t)=>{
-        console.log("t",t)
-      }}/>
+                  onErrored={(e)=>{
+                    console.log("e",e)
+                  }}
+                  onExpired={(ex)=>{
+                    console.log("ex",ex)
+                  }}
+                  onChange={(t)=>{
+                    console.log("t",t)
+                  }}/>
             </Grid>
 
 
-          </Grid>
-
-       
-      
-      </Card>
-     
+          </Grid> 
+        </Card>
       </Grid>
-
       </form>
      
     </div>
