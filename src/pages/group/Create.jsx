@@ -1,17 +1,11 @@
 import { Button, Input, TextField, FormControlLabel, FormGroup, FormLabel, Box, Typography, } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form';
-import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
 import Select from 'react-select';
 import { api } from '../../network/api';
+import {userFormValidationSchema} from './userFormValidationSchema'
 
-
-
-const userFormSchema = yup.object({
-    name: yup.string().required('Group Name is requried'),
-    members: yup.array().min(1,'You must add at least 1 user')
-})
 
 
 function Create() {
@@ -36,10 +30,10 @@ function Create() {
     }, [])
 
 
-
+    
 
     const { handleSubmit, control, formState: { errors } } = useForm({
-        resolver: yupResolver(userFormSchema),
+        resolver: yupResolver(userFormValidationSchema),
         defaultValues: {
             name: '',
             members: []

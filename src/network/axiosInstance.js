@@ -1,6 +1,6 @@
 import axios from 'axios'
 
 export const axiosInstance = axios.create({
-    baseURL: 'http://localhost:8088/api'
+    baseURL: 'https://seahorse-app-9o2ri.ondigitalocean.app/api'
   });
 
