@@ -6,12 +6,12 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import { 
-TextField, 
-Box, 
-Container,
-Typography, 
-Button 
+import {
+    TextField,
+    Box,
+    Container,
+    Typography,
+    Button
 } from '@mui/material';
 
 const schema = yup.object({
@@ -63,18 +63,23 @@ function Login() {
 
     return (<>
         {/* <button onClick={() => userLogin()}>Login</button> */}
-        <Container component="main" maxWidth="xs">
+        <Container component="main" maxWidth="xs" style={{ margin: "75px auto" }}>
             <form method='POST' className='form' onSubmit={handleSubmit(onSubmit)}>
                 <Box
                     sx={{
-                        marginTop: 8,
+                        boxShadow: '0px 0px 30px 0px darkblue',
                         display: 'flex',
                         flexDirection: 'column',
-                        gap:"10px",
-                        width:"100%"
+                        justifyContent: 'center',
+                        alignContent: 'center',
+                        gap: "10px",
+                        width: "100%",
+                        height: "75vh",
+                        padding: '0 36px',
+                        borderRadius: "15px"
                     }}
                 >
-                    <Typography component="h1" variant="h5" textAlign={"center"} color="primary">
+                    <Typography component="h1" variant="h5" textAlign={"center"} fontWeight={"bold"} color="primary">
                         Login
                     </Typography>
                     <TextField
@@ -104,6 +109,7 @@ function Login() {
 
                     />
                     <ReCAPTCHA
+                        style={{ margin: " 0 auto" }}
                         sitekey="6Lf4UogkAAAAAJwL3aobfuyiymu12TZOEaze7HlW"
                         onChange={onChange}
                     />
@@ -111,7 +117,7 @@ function Login() {
                         type="submit"
                         fullWidth
                         variant="contained"
-                        sx={{ mt: 3, mb: 2 ,p:2}}
+                        sx={{ mt: 3, mb: 2, p: 2 }}
                     >Submit</Button>
                 </Box>
             </form>

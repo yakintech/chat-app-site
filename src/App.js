@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+// import React, { useContext } from "react";
 import Create from "./pages/group/Create";
 import { Routes, Route } from "react-router-dom";
 import Index from "./pages/group/Index";
 import Login from "./pages/public/Login";
-import { authContext } from "./store/AuthContext";
+// import { authContext } from "./store/AuthContext";
 import ConfirmCode from "./pages/public/ConfirmCode";
 import Dashboard from "./pages/dashboard/Dashboard";
 import PublicLayout from "./pages/layout/PublicLayout";
