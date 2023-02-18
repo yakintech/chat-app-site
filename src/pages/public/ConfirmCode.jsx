@@ -29,42 +29,41 @@ function ConfirmCode() {
 
     return (<>
         <Container component="main" maxWidth="xs" style={{ margin: "120px auto" }}>
-            <form method='POST' className='form'  >
-                <Box
-                    sx={{
-                        boxShadow: '0px 0px 30px 0px darkblue',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'center',
-                        alignContent: 'center',
-                        gap: "10px",
-                        width: "100%",
-                        height: "60vh",
-                        padding: '0 36px',
-                        borderRadius: "15px"
-                    }}
-                >
-                    <Typography component="h1" variant="h5" textAlign={"center"} fontWeight={"bold"} color="primary">
-                        Confirmation
-                    </Typography>
-                    <TextField
-                        autoFocus
-                        margin="normal"
-                        autoComplete='password'
-                        label="Confirm code"
-                        variant="outlined"
-                        fullWidth
-                        onChange={(e) => setconfirmCode(e.target.value)}
-                    />
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        sx={{ mt: 3, mb: 2, p: 2 }}
-                        onClick={confirm}
-                    >Submit</Button>
-                </Box>
-            </form>
+            <Box
+                sx={{
+                    boxShadow: '0px 0px 30px 0px darkblue',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignContent: 'center',
+                    gap: "10px",
+                    width: "100%",
+                    height: "60vh",
+                    padding: '0 36px',
+                    borderRadius: "15px"
+                }}
+            >
+                <Typography component="h1" variant="h5" textAlign={"center"} fontWeight={"bold"} color="primary">
+                    Confirmation
+                </Typography>
+                <TextField
+                    autoFocus
+                    margin="normal"
+                    autoComplete='password'
+                    label="Confirm code"
+                    variant="outlined"
+                    fullWidth
+                    onChange={(e) => setconfirmCode(e.target.value)}
+                />
+                <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2, p: 2 }}
+                    onClick={confirm}
+                >Submit</Button>
+            </Box>
+
         </Container>
     </>)
 }
